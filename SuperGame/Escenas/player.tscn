@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0h53rfxr41p8"]
+
+[ext_resource type="Script" uid="uid://4vvubvtpndr5" path="res://Scripts/player.gd" id="1_i8vih"]
+[ext_resource type="Texture2D" uid="uid://dlgy40bhymg3p" path="res://Images/personaje.png" id="2_i8vih"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_i8vih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(236, 230)
+scale = Vector2(0.06355555, 0.06504064)
+texture = ExtResource("2_i8vih")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(167, 141, 173, 141, 173, 121, 179, 121, 179, 114, 192, 114, 192, 108, 268, 108, 268, 114, 287, 114, 287, 120, 293, 120, 293, 127, 300, 127, 300, 172, 293, 172, 294, 212, 281, 212, 280, 218, 275, 218, 275, 224, 268, 224, 268, 237, 274, 238, 274, 251, 280, 251, 280, 269, 287, 270, 287, 302, 273, 302, 275, 335, 282, 335, 281, 347, 275, 347, 274, 353, 211, 354, 211, 348, 198, 348, 198, 303, 192, 303, 192, 296, 187, 296, 186, 265, 191, 264, 192, 244, 199, 244, 199, 239, 212, 238, 211, 225, 199, 224, 199, 218, 192, 218, 192, 205, 179, 205, 179, 199, 173, 198, 173, 179, 167, 179)
