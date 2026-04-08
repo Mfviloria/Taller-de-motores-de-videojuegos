@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://0h53rfxr41p8"]
+[gd_scene load_steps=17 format=3 uid="uid://cq02qmhf40w4x"]
 
 [ext_resource type="Script" uid="uid://4vvubvtpndr5" path="res://Scripts/player.gd" id="1_i8vih"]
 [ext_resource type="Texture2D" uid="uid://b615cxciq1voc" path="res://Images/personaje mujer afro/pixil-frame-0.png" id="2_6njrx"]

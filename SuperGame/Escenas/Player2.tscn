@@ -1,0 +1,106 @@
+[gd_scene load_steps=18 format=3 uid="uid://bwpmlvk7ixdb8"]
+
+[ext_resource type="Script" uid="uid://4vvubvtpndr5" path="res://Scripts/player.gd" id="1_snpve"]
+[ext_resource type="Texture2D" uid="uid://b615cxciq1voc" path="res://Images/personaje mujer afro/pixil-frame-0.png" id="2_b4axb"]
+[ext_resource type="Texture2D" uid="uid://dyt0aeuo7x6uu" path="res://Images/personaje mujer afro/pixil-frame-1.png" id="3_at8cj"]
+[ext_resource type="Texture2D" uid="uid://dnpnxro374rtv" path="res://Images/personaje mujer afro/pixil-frame-2.png" id="4_r0ljg"]
+[ext_resource type="Texture2D" uid="uid://ji3utoqmj0v5" path="res://Images/personaje mujer afro/pixil-frame-3.png" id="5_y7d4d"]
+[ext_resource type="Texture2D" uid="uid://cxaay5wfnynja" path="res://Images/personaje mujer afro/pixil-frame-4.png" id="6_f0w32"]
+[ext_resource type="Texture2D" uid="uid://cwbmv2shu7lxh" path="res://Images/personaje mujer afro/pixil-frame-5.png" id="7_10ot7"]
+[ext_resource type="Texture2D" uid="uid://fii0mmk6gj2o" path="res://Images/personaje mujer afro/pixil-frame-6.png" id="8_0u3ra"]
+[ext_resource type="Texture2D" uid="uid://dq17y0nqx1787" path="res://Images/personaje mujer afro/pixil-frame-7.png" id="9_uah5d"]
+[ext_resource type="Texture2D" uid="uid://csh6gnop083ty" path="res://Images/personaje mujer afro/pixil-frame-8.png" id="10_ch355"]
+[ext_resource type="Texture2D" uid="uid://b72femvyqwv4g" path="res://Images/personaje mujer afro/pixil-frame-9.png" id="11_gudeb"]
+[ext_resource type="Texture2D" uid="uid://bh20cetyvsj8s" path="res://Images/personaje mujer afro/pixil-frame-10.png" id="12_aqld0"]
+[ext_resource type="Texture2D" uid="uid://bejf6dtelqf62" path="res://Images/personaje mujer afro/pixil-frame-11.png" id="13_k7blw"]
+[ext_resource type="Texture2D" uid="uid://bf6ex38jnqhts" path="res://Images/personaje mujer afro/pixil-frame-12.png" id="14_s5am5"]
+[ext_resource type="Texture2D" uid="uid://1tha6v3u1vtw" path="res://Images/personaje mujer afro/pixil-frame-13.png" id="15_dhbww"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbx7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b4axb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_at8cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r0ljg")
+}],
+"loop": true,
+"name": &"Abajo",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_y7d4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f0w32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_10ot7")
+}],
+"loop": false,
+"name": &"Arriba",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0u3ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uah5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ch355")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gudeb")
+}],
+"loop": true,
+"name": &"Derecha",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_aqld0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k7blw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_s5am5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dhbww")
+}],
+"loop": true,
+"name": &"Izquierda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b4axb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snpve"]
+size = Vector2(105, 209)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_snpve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(387.00003, 209)
+scale = Vector2(0.26957068, 0.2143308)
+sprite_frames = SubResource("SpriteFrames_tbx7s")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(385.5, 213)
+shape = SubResource("RectangleShape2D_snpve")

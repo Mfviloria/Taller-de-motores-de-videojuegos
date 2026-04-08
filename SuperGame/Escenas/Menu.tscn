@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckqtkpj0gddyh"]
+
+[ext_resource type="Script" uid="uid://dhgcxrstpcvc2" path="res://Scripts/menu.gd" id="1_xe2ru"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xe2ru")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -53.0
+offset_top = -82.0
+offset_right = 1238.0
+offset_bottom = 756.0
+color = Color(0, 0, 0.34901962, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 125.0
+offset_right = 783.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "THE SUPERGAME"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 322.0
+offset_right = 593.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
