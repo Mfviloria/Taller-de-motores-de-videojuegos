@@ -5,8 +5,21 @@ var last_direction = ""
 func _physics_process(delta: float) -> void:
 	var directions = Input.get_vector("Izquierda", "Derecha", "Arriba", "Abajo")
 	velocity = directions * speed
-	if directions.x < 0:
-		player.flip_h = true
+	if directions == Vector2.ZERO:
+		directions = Vector2.ZERO
+		player.play("idle")
 	else:
-		player.flip_h = false
+		if directions.x < 0:
+			player.play("left")
+		elif directions.x > 0:
+			player.play("right")
+		elif directions.y > 0:
+			player.play("down")
+		elif directions.y < 0 :
+			player.play("up")
+			
+				
+		
+		
+		
 	move_and_slide()

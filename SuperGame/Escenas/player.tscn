@@ -1,15 +1,101 @@
-[gd_scene load_steps=3 format=3 uid="uid://0h53rfxr41p8"]
+[gd_scene load_steps=17 format=3 uid="uid://0h53rfxr41p8"]
 
 [ext_resource type="Script" uid="uid://4vvubvtpndr5" path="res://Scripts/player.gd" id="1_i8vih"]
-[ext_resource type="Texture2D" uid="uid://dlgy40bhymg3p" path="res://Images/personaje.png" id="2_i8vih"]
+[ext_resource type="Texture2D" uid="uid://b615cxciq1voc" path="res://Images/personaje mujer afro/pixil-frame-0.png" id="2_6njrx"]
+[ext_resource type="Texture2D" uid="uid://dyt0aeuo7x6uu" path="res://Images/personaje mujer afro/pixil-frame-1.png" id="3_cgfde"]
+[ext_resource type="Texture2D" uid="uid://dnpnxro374rtv" path="res://Images/personaje mujer afro/pixil-frame-2.png" id="4_xlwfv"]
+[ext_resource type="Texture2D" uid="uid://bh20cetyvsj8s" path="res://Images/personaje mujer afro/pixil-frame-10.png" id="5_r84g6"]
+[ext_resource type="Texture2D" uid="uid://bejf6dtelqf62" path="res://Images/personaje mujer afro/pixil-frame-11.png" id="6_m87nl"]
+[ext_resource type="Texture2D" uid="uid://bf6ex38jnqhts" path="res://Images/personaje mujer afro/pixil-frame-12.png" id="7_2eo5y"]
+[ext_resource type="Texture2D" uid="uid://1tha6v3u1vtw" path="res://Images/personaje mujer afro/pixil-frame-13.png" id="8_4tf0n"]
+[ext_resource type="Texture2D" uid="uid://fii0mmk6gj2o" path="res://Images/personaje mujer afro/pixil-frame-6.png" id="9_y153w"]
+[ext_resource type="Texture2D" uid="uid://dq17y0nqx1787" path="res://Images/personaje mujer afro/pixil-frame-7.png" id="10_6hcl0"]
+[ext_resource type="Texture2D" uid="uid://csh6gnop083ty" path="res://Images/personaje mujer afro/pixil-frame-8.png" id="11_ldnir"]
+[ext_resource type="Texture2D" uid="uid://b72femvyqwv4g" path="res://Images/personaje mujer afro/pixil-frame-9.png" id="12_n5uw0"]
+[ext_resource type="Texture2D" uid="uid://ji3utoqmj0v5" path="res://Images/personaje mujer afro/pixil-frame-3.png" id="13_el7rh"]
+[ext_resource type="Texture2D" uid="uid://cxaay5wfnynja" path="res://Images/personaje mujer afro/pixil-frame-4.png" id="14_kwk6x"]
+[ext_resource type="Texture2D" uid="uid://cwbmv2shu7lxh" path="res://Images/personaje mujer afro/pixil-frame-5.png" id="15_n4wb5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v5l4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cgfde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlwfv")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6njrx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r84g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m87nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2eo5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4tf0n")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_y153w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6hcl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ldnir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_n5uw0")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_el7rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kwk6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n4wb5")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_i8vih")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(236, 230)
-scale = Vector2(0.06355555, 0.06504064)
-texture = ExtResource("2_i8vih")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(296.00003, 250)
+scale = Vector2(0.2914571, 0.26800013)
+sprite_frames = SubResource("SpriteFrames_7v5l4")
+animation = &"down"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(62, 11)
 polygon = PackedVector2Array(167, 141, 173, 141, 173, 121, 179, 121, 179, 114, 192, 114, 192, 108, 268, 108, 268, 114, 287, 114, 287, 120, 293, 120, 293, 127, 300, 127, 300, 172, 293, 172, 294, 212, 281, 212, 280, 218, 275, 218, 275, 224, 268, 224, 268, 237, 274, 238, 274, 251, 280, 251, 280, 269, 287, 270, 287, 302, 273, 302, 275, 335, 282, 335, 281, 347, 275, 347, 274, 353, 211, 354, 211, 348, 198, 348, 198, 303, 192, 303, 192, 296, 187, 296, 186, 265, 191, 264, 192, 244, 199, 244, 199, 239, 212, 238, 211, 225, 199, 224, 199, 218, 192, 218, 192, 205, 179, 205, 179, 199, 173, 198, 173, 179, 167, 179)
