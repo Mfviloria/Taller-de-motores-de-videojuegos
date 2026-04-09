@@ -1,61 +1,150 @@
 //Declaración de variables
-int entero, posicionX, posicionY;
-PImage fondo, personaje;
-boolean boton = false;
+int entero, posicionX, posicionY, i, velocidad; //Nuevo: velocidad, i
+float yObstaculo, xObstaculo, xPersonaje, yPersonaje, obstaculoX, obstaculoY; //Nuevo: tamaños
+PImage fondo, obstaculo;
+PImage[] personaje = new PImage[14];
+boolean boton = false, arriba = true, abajo = true, derecha = true, izquierda = true; //Nuevo: direccones
 
 void setup() {
-  size(1800, 1000);
+  //Nuevo: Tamaño de pantalla
+  fullScreen();
   print("Hola");
-  fondo = loadImage("fondo_nubes.png");
-  personaje = loadImage("personaje.png");
-  posicionX = int(width*0.45);
-  posicionY = int(height*0.4);
+  fondo = loadImage("cesped.jpg");
+  obstaculo = loadImage("paparazzi.png");
+  //Nuevo: Cambiar el personaje por un vector personaje
+  for (i=0; i<=13; i++) {
+    personaje[i] = loadImage("personaje_"+i+".png");
+    posicionX = int(width*0.45);
+    posicionY = int(height*0.4);
+  }
+  //Nuevo: Inicializar velocidad, i
+  i=7;
+  velocidad = 30;
+  xPersonaje = width*0.12; //Ancho Personaje
+  yPersonaje = height*0.18; //Alto personaje
+  xObstaculo = width*0.12; //Ancho obstáculo
+  yObstaculo = height*0.12; //Alto obstáculo
+  obstaculoX = width * 0.3; // Posicion X obstáculo
+  obstaculoY = height * 0.65; //Posicion Y obstáculo
 }
 
 void draw() {
-  image(fondo, 0, 0);
+  image(fondo, 0, 0, width, height);
 
-  //Posición fija para personaje
-  //image(personaje,int(width*0.45),int(height*0.4), int(width*0.1),int(height*0.15));
-
-  //Posición cambiante para el personaje
-  image(personaje, posicionX, posicionY, int(width*0.1), int(height*0.15) );
+  image(personaje[i], posicionX, posicionY, xPersonaje, yPersonaje);
   movimientoTeclado();
-  //movimientoConMouse();
+  //Nuevo: Dibujar obstáculo
+  image(obstaculo, width*0.3, height*0.65, xObstaculo, yObstaculo);
   boton();
+  obstaculo_colision();
 }
-
-/*void movimientoConMouse() {
-  if (mousePressed) {
-    posicionX = int(mouseX);
-    posicionY = int(mouseY);
-
-    //Solo aparece cuando el mouse está presionado
-  }
-}
-*/
 
 void movimientoTeclado() {
-
-  if (keyPressed && (key == 'd' || keyCode == RIGHT)) {
-    if (posicionX + width*0.1 < width) {
-      posicionX += 20;
+  //Nuevo: Cambio en la velocidad
+  if (keyPressed && (key == 'd' || keyCode == RIGHT) && derecha) {
+    if (posicionX + width*0.2 < width) {
+      posicionX += velocidad;
+    }
+    switch(i) {
+    case 3:
+      i=4;
+      break;
+    case 4:
+      i=5;
+      break;
+    case 5:
+      i=6;
+      break;
+    case 6:
+      i=3;
+      break;
+    }
+    if(i<2 || i > 6){
+      i=3;
     }
   }
-  if (keyPressed && (key == 'a' || keyCode == LEFT)) {
+  if (keyPressed && (key == 'a' || keyCode == LEFT) && izquierda) {
     if (posicionX > 0) {
-      posicionX -= 20;
+      posicionX -= velocidad;
+    }
+    switch(i) {
+    case 10:
+      i=11;
+      break;
+    case 11:
+      i=12;
+      break;
+    case 12:
+      i=13;
+      break;
+    case 13:
+      i=10;
+      break;
+    }
+    if(i<10){
+      i=10;
     }
   }
-  if (keyPressed && (key == 'w' || keyCode == UP)) {
+  if (keyPressed && (key == 'w' || keyCode == UP) && arriba) {
     if (posicionY > 0) {
-      posicionY -= 20;
+      posicionY -= velocidad;
+    }
+    switch(i) {
+    case 0:
+      i=1;
+      break;
+    case 1:
+      i=2;
+      break;
+    case 2:
+      i=0;
+      break;
+    }
+    if(i>2){
+      i=0;
     }
   }
-  if (keyPressed && (key == 's' || keyCode == DOWN)) {
-    if (posicionY + (height*0.15) < height) {
-      posicionY += 20;
+  if (keyPressed && (key == 's' || keyCode == DOWN) && abajo) {
+    if (posicionY + (height*0.25) < height) {
+      posicionY += velocidad;
     }
+    switch(i) {
+    case 7:
+      i=8;
+      break;
+    case 8:
+      i=9;
+      break;
+    case 9:
+      i=7;
+      break;
+    }
+    if(i<7 || i > 9){
+      i=7;
+    }
+  }
+}
+
+void obstaculo_colision(){
+  if(posicionY + yPersonaje > obstaculoY && posicionY < obstaculoY && posicionX + xPersonaje > obstaculoX && posicionX < obstaculoX + xObstaculo){
+    abajo = false;
+  }else{
+    abajo=true;
+  }
+  if(posicionY < obstaculoY + yObstaculo && posicionY > obstaculoY && posicionX + xPersonaje > obstaculoX && posicionX < obstaculoX + xObstaculo){
+    arriba = false;
+  }else{
+    arriba=true;
+  }
+  if(posicionX + xPersonaje > obstaculoX && posicionX < obstaculoX && posicionY + yPersonaje > obstaculoY && posicionY < obstaculoY + yObstaculo){
+    derecha = false;
+  }else{
+    derecha=true;
+  }
+  if(posicionX < obstaculoX + xObstaculo && posicionX > obstaculoX && posicionY + yPersonaje > obstaculoY && posicionY < obstaculoY + yObstaculo){
+    izquierda = false;
+  }else{
+    izquierda=true;
   }
 }
 
@@ -74,9 +163,3 @@ void mouseClicked() {
     }
   }
 }
-
-/*
-void mouseClicked() {
- image(personaje,mouseX, mouseY,int(width*0.1), int(height*0.15));
- }
-*/
